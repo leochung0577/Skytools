@@ -1,0 +1,19 @@
+package net.leo.Skytools.event;
+
+import net.leo.Skytools.util.GameState;
+import net.minecraftforge.client.event.ViewportEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+@Mod.EventBusSubscriber
+public class RenderFogEvent {
+
+    @SubscribeEvent
+    public static void onRenderFog(ViewportEvent.RenderFog event) {
+        if (GameState.RemoveFogToggle) {
+            event.setNearPlaneDistance(0.0f);       // how close fog starts
+            event.setFarPlaneDistance(500.0f);     // how far you can see (simulate no fog)
+            event.setCanceled(true);                // prevent vanilla handling
+        }
+    }
+}
