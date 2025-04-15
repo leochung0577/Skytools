@@ -14,11 +14,10 @@ import java.util.List;
 public class ChestReader {
 
     @SubscribeEvent
-    public static void onScreenOpen(ScreenEvent.Opening event) {
-        if (!(event.getNewScreen() instanceof AbstractContainerScreen<?> screen)) return;
+    public static void onScreenClose(ScreenEvent.Closing event) {
+        if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) return;
 
         String name = screen.getTitle().getString();
-        Minecraft mc = Minecraft.getInstance();
 
 //        System.out.println(name);
         if (name.equals("Your Equipment and Stats")) {
