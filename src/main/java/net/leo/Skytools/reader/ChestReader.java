@@ -42,12 +42,7 @@ public class ChestReader {
                                 // Store the item using StoreItem
                                 StoreItem.saveItem("equipment", key, stack);
 
-                                switch (index) {
-                                    case 0 -> GameState.equipmentSlot1 = stack.copy();
-                                    case 1 -> GameState.equipmentSlot2 = stack.copy();
-                                    case 2 -> GameState.equipmentSlot3 = stack.copy();
-                                    case 3 -> GameState.equipmentSlot4 = stack.copy();
-                                }
+                                GameState.equipment[index] = stack.copy();
                             }
                         }
                     }

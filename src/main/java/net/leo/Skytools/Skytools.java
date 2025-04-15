@@ -73,10 +73,10 @@ public class Skytools {
             GameState.displayPet = SkyConfig.TOGGLE_MAP.get("Pet Display").get();
 
             //equipment data
-            GameState.equipmentSlot1 = StoreItem.getItem("equipment", "slot1");
-            GameState.equipmentSlot2 = StoreItem.getItem("equipment", "slot2");
-            GameState.equipmentSlot3 = StoreItem.getItem("equipment", "slot3");
-            GameState.equipmentSlot4 = StoreItem.getItem("equipment", "slot4");
+            for (int i = 0; i < 4; i++) {
+                GameState.equipment[i] = StoreItem.getItem("equipment", "slot" + (i + 1));
+            }
+
         });
     }
 

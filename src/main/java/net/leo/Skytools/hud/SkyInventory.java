@@ -82,19 +82,11 @@ public class SkyInventory {
                 50 / 2,
                 172 / 2);
 
-        // Draw the item icons
-        ItemStack[] equipment = new ItemStack[]{
-                GameState.equipmentSlot1,
-                GameState.equipmentSlot2,
-                GameState.equipmentSlot3,
-                GameState.equipmentSlot4
-        };
-
         int startX = x + SLOT_RENDER_OFFSET_X;
         int startY = y + SLOT_RENDER_OFFSET_Y;
 
-        for (int i = 0; i < equipment.length; i++) {
-            ItemStack stack = equipment[i];
+        for (int i = 0; i < GameState.equipment.length; i++) {
+            ItemStack stack = GameState.equipment[i];
             int itemX = startX;
             int itemY = startY + i * SLOT_SPACING;
 

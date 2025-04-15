@@ -14,6 +14,7 @@ public class GameState {
     public static Pest currentPest = new Pest();
 
     // equipment
+    public static ItemStack[] equipment = new ItemStack[4];
     public static ItemStack equipmentSlot1 = ItemStack.EMPTY;
     public static ItemStack equipmentSlot2 = ItemStack.EMPTY;
     public static ItemStack equipmentSlot3 = ItemStack.EMPTY;

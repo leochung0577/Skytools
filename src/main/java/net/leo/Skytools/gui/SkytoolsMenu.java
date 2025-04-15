@@ -120,6 +120,7 @@ public class SkytoolsMenu extends Screen {
             }
             return true;
         } else if (commandKeyPressed) {
+            commandKeyPressed = false;
             if (keyCode != GLFW.GLFW_KEY_ESCAPE) {
                 commandKeyMapping.setKey(InputConstants.getKey(keyCode, scanCode));
                 KeyMapping.resetMapping();
