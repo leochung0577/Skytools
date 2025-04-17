@@ -19,3 +19,6 @@ Hypixel Skyblock clientside mod
 
 #### Fog remover<br />
 ![image](https://github.com/user-attachments/assets/08e44b10-1303-466e-85a2-bd96c124e543)
+
+#### Keybindings<br />
+![image](https://github.com/user-attachments/assets/e8df049e-c13e-4fa1-9a1d-01dbc2d3f89f)
