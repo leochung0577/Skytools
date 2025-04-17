@@ -3,7 +3,7 @@ package net.leo.Skytools;
 import net.leo.Skytools.config.SkyConfig;
 import net.leo.Skytools.gui.EquipmentInventory;
 import net.leo.Skytools.gui.SkytoolsMenu;
-import net.leo.Skytools.hud.SkyOverlay;
+import net.leo.Skytools.hud.Overlay;
 import net.leo.Skytools.util.GameState;
 import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
@@ -64,7 +64,7 @@ public class Skytools {
         Minecraft.getInstance().execute(() -> {
             Gui gui = Minecraft.getInstance().gui;
             LayeredDraw layeredDraw = gui.layers;
-            layeredDraw.add(new SkyOverlay());
+            layeredDraw.add(new Overlay());
 
             //toggles
             GameState.RemoveFogToggle = SkyConfig.TOGGLE_MAP.get("Remove Fog").get();

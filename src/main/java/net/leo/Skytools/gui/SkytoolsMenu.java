@@ -63,7 +63,7 @@ public class SkytoolsMenu extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Toggles"),
                 button -> {
                     Minecraft mc = Minecraft.getInstance();
-                    mc.setScreen(new SkytogglesMenu());
+                    mc.setScreen(new TogglesMenu());
                 }
         ).bounds(10, this.height - 20 - 10, 75, 20).build());
     }

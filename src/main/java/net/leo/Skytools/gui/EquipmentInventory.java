@@ -2,7 +2,7 @@ package net.leo.Skytools.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.leo.Skytools.util.SkyCommand;
+import net.leo.Skytools.util.AutoCommand;
 import net.leo.Skytools.util.GameState;
 import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
@@ -52,7 +52,7 @@ public class EquipmentInventory {
         int size = 18;
 
         equipmentButton = Button.builder(Component.literal(""), btn -> {
-            SkyCommand.sendChatCommand("equipment");
+            AutoCommand.sendChatCommand("equipment");
         }).bounds(equipmentButtonX, equipmentButtonY, size, size + 54).build();
 
         event.addListener(equipmentButton);

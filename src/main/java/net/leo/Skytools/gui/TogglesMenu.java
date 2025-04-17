@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SkytogglesMenu extends Screen {
+public class TogglesMenu extends Screen {
 
     private final List<String> toggleNames = List.of(
             "Remove Fog",
@@ -23,7 +23,7 @@ public class SkytogglesMenu extends Screen {
 
     private final Map<String, Boolean> toggleStates = new HashMap<>();
 
-    public SkytogglesMenu() {
+    public TogglesMenu() {
         super(Component.literal("Skytoggle Menu"));
     }
 

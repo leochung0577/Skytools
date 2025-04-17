@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-public class SkyOverlay implements LayeredDraw.Layer {
+public class Overlay implements LayeredDraw.Layer {
 
     private static Minecraft mc = Minecraft.getInstance();
     @Override

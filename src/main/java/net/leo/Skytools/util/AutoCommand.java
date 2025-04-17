@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber
-public class SkyCommand {
+public class AutoCommand {
     private static final Minecraft mc = Minecraft.getInstance();
     private static String commandText = "warp garden"; // Default command, can be changed dynamically later
 

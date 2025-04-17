@@ -1,7 +1,7 @@
 package net.leo.Skytools.reader;
 
 import net.leo.Skytools.util.GameState;
-import net.leo.Skytools.util.SkyCommand;
+import net.leo.Skytools.util.AutoCommand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -124,7 +124,7 @@ public class TablistReader {
         }
 
         for(String line: StringListNames) {
-            SkyCommand.sendClientChatMessage(line);
+            AutoCommand.sendClientChatMessage(line);
         }
     }
 

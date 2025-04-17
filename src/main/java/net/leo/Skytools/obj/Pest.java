@@ -1,6 +1,6 @@
 package net.leo.Skytools.obj;
 
-import net.leo.Skytools.util.SkyCommand;
+import net.leo.Skytools.util.AutoCommand;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -114,7 +114,7 @@ public class Pest {
 
     public void tp2Pest() {
         if (this.plots == null || this.plots.isEmpty()) {
-            SkyCommand.sendClientChatMessage("§4§l<!> No Pest Found <!>");
+            AutoCommand.sendClientChatMessage("§4§l<!> No Pest Found <!>");
             return;
         }
 
@@ -123,9 +123,9 @@ public class Pest {
         Integer plot = this.plots.iterator().next();
 
         if (plot != null) {
-            SkyCommand.sendChatCommand("tptoplot " + plot);
+            AutoCommand.sendChatCommand("tptoplot " + plot);
         } else {
-            SkyCommand.sendClientChatMessage("§4§l<!> No Valid Plot <!>");
+            AutoCommand.sendClientChatMessage("§4§l<!> No Valid Plot <!>");
         }
     }
 
