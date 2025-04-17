@@ -1,13 +1,30 @@
 package net.leo.Skytools.util;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.leo.Skytools.obj.Pest;
 import net.leo.Skytools.obj.Pet;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.world.item.ItemStack;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameState {
+    // Keybinds
+    public static final KeyMapping menuKey = new KeyMapping(
+            "Skytools Menu",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_G,
+            "Skytools"
+    );
+    public static final KeyMapping commandKey = new KeyMapping(
+            "Auto Command",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_B,
+            "Skytools"
+    );
+
     //data
     public static String currentLocation = "";
     public static Pet currentPet = new Pet();

@@ -1,6 +1,5 @@
 package net.leo.Skytools;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.leo.Skytools.config.SkyConfig;
 import net.leo.Skytools.gui.SkytoolsMenu;
 import net.leo.Skytools.hud.SkyOverlay;
@@ -23,7 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.lwjgl.glfw.GLFW;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,8 +30,6 @@ public class Skytools {
 
     public static final String MODID = "skytools";
     public static final Logger LOGGER = LogManager.getLogger();
-    private static KeyMapping openMenuKey;
-    private static KeyMapping commandKey;
 
     public Skytools() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -81,25 +77,13 @@ public class Skytools {
     }
 
     private void registerKeybinds(final RegisterKeyMappingsEvent event) {
-        openMenuKey = new KeyMapping(
-                "Sky Tools Menu",
-                InputConstants.Type.KEYSYM,
-                GLFW.GLFW_KEY_Z,
-                "key.categories.misc"
-        );
-        commandKey = new KeyMapping(
-                "Sky Command",
-                InputConstants.Type.KEYSYM,
-                GLFW.GLFW_KEY_PAGE_DOWN,
-                "key.categories.misc"
-        );
-        event.register(openMenuKey);
-        event.register(commandKey);
+        event.register(GameState.menuKey);
+        event.register(GameState.commandKey);
     }
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.Key event) {
-        if (openMenuKey != null && openMenuKey.consumeClick()) {
+        if (GameState.menuKey != null && GameState.menuKey.consumeClick()) {
             Minecraft mc = Minecraft.getInstance();
             mc.setScreen(new SkytoolsMenu());
         }
@@ -118,14 +102,6 @@ public class Skytools {
 
             event.addListener(skyToolsButton);
         }
-    }
-
-    public static KeyMapping getMenuKey() {
-        return openMenuKey;
-    }
-
-    public static KeyMapping getCommandKey() {
-        return commandKey;
     }
 
     public static boolean isKeyConflict(KeyMapping mapping) {
