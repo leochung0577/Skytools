@@ -12,7 +12,7 @@ public class RenderFogEvent {
     public static void onRenderFog(ViewportEvent.RenderFog event) {
         if (GameState.RemoveFogToggle) {
             event.setNearPlaneDistance(0.0f);       // how close fog starts
-            event.setFarPlaneDistance(500.0f);     // how far you can see (simulate no fog)
+            event.setFarPlaneDistance(700.0f);     // how far you can see (simulate no fog)
             event.setCanceled(true);                // prevent vanilla handling
         }
     }

@@ -32,10 +32,6 @@ public class GameState {
 
     // equipment
     public static ItemStack[] equipment = new ItemStack[4];
-    public static ItemStack equipmentSlot1 = ItemStack.EMPTY;
-    public static ItemStack equipmentSlot2 = ItemStack.EMPTY;
-    public static ItemStack equipmentSlot3 = ItemStack.EMPTY;
-    public static ItemStack equipmentSlot4 = ItemStack.EMPTY;
 
     //location chcker
     public static boolean isInSkyblock = false;
@@ -45,6 +41,7 @@ public class GameState {
     public static boolean showPesthud = false;
     public static boolean showYawPitch = false;
     public static boolean displayPet = false;
+
     // keys
     public static String petKey = "";
     public static String pestKey = "";

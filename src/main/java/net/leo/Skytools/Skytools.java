@@ -2,6 +2,7 @@ package net.leo.Skytools;
 
 import net.leo.Skytools.config.SkyConfig;
 import net.leo.Skytools.gui.SkytoolsMenu;
+import net.leo.Skytools.hud.EquipmentInventory;
 import net.leo.Skytools.hud.SkyOverlay;
 import net.leo.Skytools.util.GameState;
 import net.leo.Skytools.util.StoreItem;
@@ -47,8 +48,7 @@ public class Skytools {
         // static function
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.event.onLoginEvent.class);
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.event.RenderFogEvent.class);
-        MinecraftForge.EVENT_BUS.register(net.leo.Skytools.hud.SkyInventory.class);
-        MinecraftForge.EVENT_BUS.register(net.leo.Skytools.reader.ChestReader.class);
+        MinecraftForge.EVENT_BUS.register(EquipmentInventory.class);
 
         new net.leo.Skytools.reader.ChatReader();
 

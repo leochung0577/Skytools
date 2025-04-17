@@ -4,13 +4,16 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.leo.Skytools.util.SkyCommand;
 import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.util.StoreItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -21,7 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 
 @Mod.EventBusSubscriber
-public class SkyInventory {
+public class EquipmentInventory {
 
     private static final Minecraft mc = Minecraft.getInstance();
 
@@ -111,6 +114,37 @@ public class SkyInventory {
                             mouseX,
                             mouseY
                     );
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onScreenClose(ScreenEvent.Closing event) {
+        if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) return;
+
+        String name = screen.getTitle().getString();
+
+//        System.out.println(name);
+        if (name.equals("Your Equipment and Stats")) {
+            // Access the menu and its slots
+            List<Slot> slots = screen.getMenu().slots;
+
+            int[] targetIndices = {10, 19, 28, 37}; // Column 2, rows 2–5
+
+            for (int index = 0; index < targetIndices.length; index++) {
+                int slotIndex = targetIndices[index];
+                String key = "slot" + (index + 1);
+
+                if (slotIndex >= 0 && slotIndex < slots.size()) {
+                    ItemStack stack = slots.get(slotIndex).getItem();
+
+                    if (!stack.isEmpty()) {
+                        // Store the item using StoreItem
+                        StoreItem.saveItem("equipment", key, stack);
+
+                        GameState.equipment[index] = stack.copy();
+                    }
                 }
             }
         }
