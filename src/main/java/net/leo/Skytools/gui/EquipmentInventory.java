@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.leo.Skytools.util.SkyCommand;
 import net.leo.Skytools.util.GameState;
-import net.leo.Skytools.util.StoreItem;
+import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -141,7 +141,7 @@ public class EquipmentInventory {
 
                     if (!stack.isEmpty()) {
                         // Store the item using StoreItem
-                        StoreItem.saveFile("equipment", "equipment.nbt",key, stack);
+                        FileManager.saveFile("equipment", "equipment.nbt",key, stack);
 
                         GameState.equipment[index] = stack.copy();
                     }

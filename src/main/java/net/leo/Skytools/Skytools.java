@@ -5,7 +5,7 @@ import net.leo.Skytools.gui.EquipmentInventory;
 import net.leo.Skytools.gui.SkytoolsMenu;
 import net.leo.Skytools.hud.SkyOverlay;
 import net.leo.Skytools.util.GameState;
-import net.leo.Skytools.util.StoreItem;
+import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.Gui;
@@ -74,7 +74,7 @@ public class Skytools {
 
             //equipment data
             for (int i = 0; i < 4; i++) {
-                GameState.equipment[i] = StoreItem.getItem("equipment", "equipment.nbt", "slot" + (i + 1));
+                GameState.equipment[i] = FileManager.getItem("equipment", "equipment.nbt", "slot" + (i + 1));
             }
 
             // storage data
@@ -82,15 +82,15 @@ public class Skytools {
                 String path = "storage/" + storageId;
 
                 // Only proceed if this storage folder actually exists
-                if (!StoreItem.fileExists(path)) continue;
+                if (!FileManager.fileExists(path)) continue;
 
-                int slotCount = StoreItem.getSlotCount(path);
+                int slotCount = FileManager.getSlotCount(path);
                 if (slotCount == 0) continue;
 
                 List<ItemStack> contents = new ArrayList<>();
                 for (int i = 0; i < slotCount; i++) {
                     String key = "slot" + (i + 1);
-                    contents.add(StoreItem.getItem(path, "items.nbt", key));
+                    contents.add(FileManager.getItem(path, "items.nbt", key));
                 }
 
                 GameState.saveStorageItems(storageId, contents);

@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreItem {
+public class FileManager {
 
     // Cached per location
     private static final Map<String, Map<String, ItemStack>> data = new HashMap<>();

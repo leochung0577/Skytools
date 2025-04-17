@@ -2,7 +2,7 @@ package net.leo.Skytools.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.leo.Skytools.util.GameState;
-import net.leo.Skytools.util.StoreItem;
+import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -175,14 +175,14 @@ public class StoragePeak {
             if (!stack.isEmpty()) {
                 item = stack.copy();
                 item.remove(DataComponents.ENCHANTMENTS);
-                StoreItem.saveFile("storage/" + storageId, "items.nbt", key, item);
+                FileManager.saveFile("storage/" + storageId, "items.nbt", key, item);
 //                storageContent[index] = .copy();
             }
             storageContent.add(stack.copy());
         }
 
         GameState.saveStorageItems(storageId, storageContent);
-        StoreItem.saveSlotCount("storage/" + storageId, "slotCount.txt", storageContent.size());
+        FileManager.saveSlotCount("storage/" + storageId, "slotCount.txt", storageContent.size());
 
     }
 
