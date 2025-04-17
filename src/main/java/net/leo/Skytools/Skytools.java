@@ -1,8 +1,8 @@
 package net.leo.Skytools;
 
 import net.leo.Skytools.config.SkyConfig;
+import net.leo.Skytools.gui.EquipmentInventory;
 import net.leo.Skytools.gui.SkytoolsMenu;
-import net.leo.Skytools.hud.EquipmentInventory;
 import net.leo.Skytools.hud.SkyOverlay;
 import net.leo.Skytools.util.GameState;
 import net.leo.Skytools.util.StoreItem;
@@ -12,6 +12,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.PauseScreen;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -25,6 +26,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(Skytools.MODID)
 public class Skytools {
@@ -70,9 +74,27 @@ public class Skytools {
 
             //equipment data
             for (int i = 0; i < 4; i++) {
-                GameState.equipment[i] = StoreItem.getItem("equipment", "slot" + (i + 1));
+                GameState.equipment[i] = StoreItem.getItem("equipment", "equipment.nbt", "slot" + (i + 1));
             }
 
+            // storage data
+            for (int storageId = 1; storageId <= 29; storageId++) {
+                String path = "storage/" + storageId;
+
+                // Only proceed if this storage folder actually exists
+                if (!StoreItem.fileExists(path)) continue;
+
+                int slotCount = StoreItem.getSlotCount(path);
+                if (slotCount == 0) continue;
+
+                List<ItemStack> contents = new ArrayList<>();
+                for (int i = 0; i < slotCount; i++) {
+                    String key = "slot" + (i + 1);
+                    contents.add(StoreItem.getItem(path, "items.nbt", key));
+                }
+
+                GameState.saveStorageItems(storageId, contents);
+            }
         });
     }
 

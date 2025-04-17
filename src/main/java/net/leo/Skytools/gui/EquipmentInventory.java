@@ -1,4 +1,4 @@
-package net.leo.Skytools.hud;
+package net.leo.Skytools.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -141,7 +141,7 @@ public class EquipmentInventory {
 
                     if (!stack.isEmpty()) {
                         // Store the item using StoreItem
-                        StoreItem.saveItem("equipment", key, stack);
+                        StoreItem.saveFile("equipment", "equipment.nbt",key, stack);
 
                         GameState.equipment[index] = stack.copy();
                     }

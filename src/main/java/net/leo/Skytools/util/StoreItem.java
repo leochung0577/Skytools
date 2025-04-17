@@ -17,25 +17,25 @@ public class StoreItem {
     // Cached per location
     private static final Map<String, Map<String, ItemStack>> data = new HashMap<>();
 
-    private static File getFile(String location) {
+    private static File getFile(String location, String fileName) {
         File dir = new File(FMLPaths.CONFIGDIR.get().toFile(), "Skytools/" + location);
         if (!dir.exists()) dir.mkdirs();
-        return new File(dir, "items.nbt");
+        return new File(dir, fileName);
     }
 
-    public static void saveItem(String location, String key, ItemStack stack) {
-        loadFromFile(location); // Ensure loaded before saving
+    public static void saveFile(String location, String fileName, String key, ItemStack stack) {
+        loadFromFile(location, fileName); // Ensure loaded before saving
         data.computeIfAbsent(location, loc -> new HashMap<>()).put(key, stack.copy());
-        saveToFile(location);
+        saveToFile(location, fileName);
     }
 
-    public static ItemStack getItem(String location, String key) {
-        loadFromFile(location); // Lazy load
+    public static ItemStack getItem(String location, String fileName, String key) {
+        loadFromFile(location, fileName); // Lazy load
         return data.getOrDefault(location, new HashMap<>()).getOrDefault(key, ItemStack.EMPTY);
     }
 
-    public static void saveToFile(String location) {
-        File file = getFile(location);
+    public static void saveToFile(String location, String fileName) {
+        File file = getFile(location, fileName);
         CompoundTag root = new CompoundTag();
 
         Map<String, ItemStack> items = data.getOrDefault(location, new HashMap<>());
@@ -56,10 +56,10 @@ public class StoreItem {
     }
 
 
-    public static void loadFromFile(String location) {
+    public static void loadFromFile(String location, String fileName) {
         if (data.containsKey(location)) return;
 
-        File file = getFile(location);
+        File file = getFile(location, fileName);
         Map<String, ItemStack> map = new HashMap<>();
 
         if (file.exists()) {
@@ -82,8 +82,30 @@ public class StoreItem {
         data.put(location, map);
     }
 
-    public static Map<String, ItemStack> getAllItems(String location) {
-        loadFromFile(location);
-        return data.getOrDefault(location, new HashMap<>());
+    public static boolean fileExists(String path) {
+        File dir = new File(FMLPaths.CONFIGDIR.get().toFile(), "Skytools/" + path);
+        return dir.exists() && dir.isDirectory();
+    }
+
+    public static void saveSlotCount(String location, String fileName,int count) {
+        File dir = new File(FMLPaths.CONFIGDIR.get().toFile(), "Skytools/" + location);
+        if (!dir.exists()) dir.mkdirs();
+        File countFile = new File(dir, fileName);
+        try (FileWriter writer = new FileWriter(countFile)) {
+            writer.write(Integer.toString(count));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int getSlotCount(String location) {
+        File countFile = new File(FMLPaths.CONFIGDIR.get().toFile(), "Skytools/" + location + "/slotCount.txt");
+        if (!countFile.exists()) return 0;
+        try {
+            return Integer.parseInt(Files.readString(countFile.toPath()).trim());
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

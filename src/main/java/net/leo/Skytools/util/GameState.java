@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameState {
@@ -29,6 +30,9 @@ public class GameState {
     public static String currentLocation = "";
     public static Pet currentPet = new Pet();
     public static Pest currentPest = new Pest();
+
+    // storage
+    public static final Map<Integer, List<ItemStack>> storageItems = new HashMap<>();
 
     // equipment
     public static ItemStack[] equipment = new ItemStack[4];
@@ -92,5 +96,13 @@ public class GameState {
 
     public static boolean isInGarden() {
         return currentLocation.equals("Garden");
+    }
+
+    public static void saveStorageItems(int storageId, List<ItemStack> items) {
+        storageItems.put(storageId, items);
+    }
+
+    public static List<ItemStack> getStorageItems(int storageId) {
+        return storageItems.get(storageId);
     }
 }
