@@ -1,5 +1,5 @@
 # Skytools
-Hypixel Skyblock clientside mod
+Hypixel Skyblock clientside forge mod
 <br />
 <br />
 <br />
