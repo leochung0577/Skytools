@@ -22,3 +22,6 @@ Hypixel Skyblock clientside mod
 
 #### Keybindings<br />
 ![image](https://github.com/user-attachments/assets/e8df049e-c13e-4fa1-9a1d-01dbc2d3f89f)
+
+#### Storage Peak<br />
+![image](https://github.com/user-attachments/assets/409449ca-1f11-4038-a9d3-2113ab506cbd)
