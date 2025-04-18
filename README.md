@@ -12,7 +12,7 @@ https://modrinth.com/project/skytools
 ![image](https://github.com/user-attachments/assets/1179703c-1ec9-42b8-8fc7-d3e79ac421fd)
 
 #### Pest Display<br />
-![image](https://github.com/user-attachments/assets/64d04474-34d4-4cb2-b181-2c86ad7eff75)
+![image](https://github.com/user-attachments/assets/74527353-ee4f-428c-8b2a-9f7822150910)
 
 #### Yaw / Pitch Display<br />
 ![image](https://github.com/user-attachments/assets/253452e7-b877-42b0-b86f-5fb836dd76da)
