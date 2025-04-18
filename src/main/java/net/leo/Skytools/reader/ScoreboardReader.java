@@ -19,7 +19,7 @@ public class ScoreboardReader {
 
         if (sidebarObjective != null) {
             title = sidebarObjective.getDisplayName().getString().trim();
-            System.out.println("Sidebar Title: " + title);
+//            System.out.println("Sidebar Title: " + title);
         } else {
             System.out.println("No sidebar scoreboard currently displayed.");
         }

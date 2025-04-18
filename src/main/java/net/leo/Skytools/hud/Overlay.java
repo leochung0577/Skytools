@@ -48,7 +48,7 @@ public class Overlay implements LayeredDraw.Layer {
             }
 
             if(GameState.showPesthud)
-                renderPestInfo(graphics, x + 10, y + 150, GameState.currentPest);
+                renderPestInfo(graphics, x + 20, y + 200, GameState.currentPest);
         }
 
         if (GameState.currentPet.isValidPet() && GameState.displayPet) {
@@ -107,12 +107,21 @@ public class Overlay implements LayeredDraw.Layer {
                 "Cooldown: " + pest.cooldown
         );
 
+        graphics.drawString(
+                mc.font,
+                "§4§lPest: ",
+                x,
+                y,
+                0xFFFFFF,
+                true
+        );
+
         for (int i = 0; i < info.size(); i++) {
             graphics.drawString(
                     mc.font,
                     Component.literal(info.get(i)),
                     x + 10,
-                    y + 50 + i * 10,
+                    y + (i + 1)* 10,
                     0xFFFFFF,
                     true
             );
