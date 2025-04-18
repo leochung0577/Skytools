@@ -73,10 +73,10 @@ public class StoragePeak {
             if (index < 9 || (index >= 18 && index <= 26)) continue;
             if (storageId > 29) break;
 
-            int slotX = guiLeft + slot.x;
-            int slotY = guiTop + slot.y;
+            int slotX = guiLeft + slot.x - 1;
+            int slotY = guiTop + slot.y - 1;
 
-            if (isMouseOver(mouseX, mouseY, slotX, slotY, 16, 16)) {
+            if (isMouseOver(mouseX, mouseY, slotX, slotY, 18, 18)) {
                 List<ItemStack> stacks = GameState.getStorageItems(storageId);
                 if (stacks == null || stacks.size() == 0) {
                     isValidStorage = false;
