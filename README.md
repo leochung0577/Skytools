@@ -1,6 +1,6 @@
 # Skytools
-Hypixel Skyblock clientside forge mod
-<br />
+Hypixel Skyblock clientside forge mod<br />
+https://modrinth.com/project/skytools
 <br />
 <br />
 ## Features
