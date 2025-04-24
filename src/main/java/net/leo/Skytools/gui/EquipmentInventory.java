@@ -21,7 +21,9 @@ import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class EquipmentInventory {
@@ -125,30 +127,30 @@ public class EquipmentInventory {
 
         String name = screen.getTitle().getString();
 
-//        System.out.println(name);
         if (name.equals("Your Equipment and Stats")) {
-            // Access the menu and its slots
             List<Slot> slots = screen.getMenu().slots;
-
             int[] targetIndices = {10, 19, 28, 37}; // Column 2, rows 2–5
 
-            for (int index = 0; index < targetIndices.length; index++) {
-                int slotIndex = targetIndices[index];
-                String key = "slot" + (index + 1);
+            Map<String, ItemStack> equipmentMap = new HashMap<>();
+
+            for (int i = 0; i < targetIndices.length; i++) {
+                int slotIndex = targetIndices[i];
+                String key = "slot" + (i + 1);
 
                 if (slotIndex >= 0 && slotIndex < slots.size()) {
                     ItemStack stack = slots.get(slotIndex).getItem();
 
                     if (!stack.isEmpty()) {
-                        // Store the item using StoreItem
-                        FileManager.saveFile("equipment", "equipment.nbt",key, stack);
-
-                        GameState.equipment[index] = stack.copy();
+                        equipmentMap.put(key, stack.copy());
+                        GameState.equipment[i] = stack.copy();
                     }
                 }
             }
+
+            FileManager.saveAllItems("equipment", "equipment.nbt", equipmentMap);
         }
     }
+
 
     private static boolean isMouseOver(double mouseX, double mouseY, int x, int y, int width, int height) {
         return mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height);

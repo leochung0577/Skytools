@@ -17,7 +17,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -167,23 +169,25 @@ public class StoragePeak {
         // This is the final capture of all items before closing
         List<Slot> slots = screen.getMenu().slots;
         List<ItemStack> storageContent = new ArrayList<>();
+        Map<String, ItemStack> storageMap = new HashMap<>();
+
         for (int i = 9, index = 0; i < slots.size() - 36; i++, index++) {
             ItemStack stack = slots.get(i).getItem();
             String key = "slot" + (index + 1);
 
-            ItemStack item;
-            if (!stack.isEmpty()) {
-                item = stack.copy();
+//            System.out.println("Slot: " + (index + 1) + " Item: " + stack.getItem());
+
+            ItemStack item = stack.copy();
+            if (!item.isEmpty()) {
                 item.remove(DataComponents.ENCHANTMENTS);
-                FileManager.saveFile("storage/" + storageId, "items.nbt", key, item);
-//                storageContent[index] = .copy();
+                storageMap.put(key, item);
             }
-            storageContent.add(stack.copy());
+            storageContent.add(item);
         }
 
         GameState.saveStorageItems(storageId, storageContent);
-        FileManager.saveSlotCount("storage/" + storageId, "slotCount.txt", storageContent.size());
-
+        FileManager.saveAllItems("storage", "storage" + storageId + ".nbt", storageMap);
+        FileManager.saveSlotCount("storage", "slotCount" + storageId + ".txt", storageContent.size());
     }
 
     public static int isStorage(String name) {

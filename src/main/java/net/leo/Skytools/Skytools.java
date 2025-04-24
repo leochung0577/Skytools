@@ -79,18 +79,19 @@ public class Skytools {
 
             // storage data
             for (int storageId = 1; storageId <= 29; storageId++) {
-                String path = "storage/" + storageId;
+                String itemPath = "storage/storage" + storageId + ".nbt";
+                String countPath = "storage/slotCount" + storageId + ".txt";
 
-                // Only proceed if this storage folder actually exists
-                if (!FileManager.fileExists(path)) continue;
+                // Skip if either file doesn't exist
+                if (!FileManager.fileExists(itemPath) || !FileManager.fileExists(countPath)) continue;
 
-                int slotCount = FileManager.getSlotCount(path);
+                int slotCount = FileManager.getSlotCount("storage", "slotCount" + storageId + ".txt");
                 if (slotCount == 0) continue;
 
                 List<ItemStack> contents = new ArrayList<>();
-                for (int i = 0; i < slotCount; i++) {
-                    String key = "slot" + (i + 1);
-                    contents.add(FileManager.getItem(path, "items.nbt", key));
+                for (int i = 1; i <= slotCount; i++) {
+                    String key = "slot" + i;
+                    contents.add(FileManager.getItem("storage", "storage" + storageId + ".nbt", key));
                 }
 
                 GameState.saveStorageItems(storageId, contents);
