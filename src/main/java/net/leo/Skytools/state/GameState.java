@@ -1,8 +1,9 @@
-package net.leo.Skytools.util;
+package net.leo.Skytools.state;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.leo.Skytools.obj.Pest;
 import net.leo.Skytools.obj.Pet;
+import net.leo.Skytools.util.SkyGet;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
@@ -12,6 +13,20 @@ import java.util.List;
 import java.util.Map;
 
 public class GameState {
+    // player
+    public static double playerX = 0;
+    public static double playerY = 0;
+    public static double playerZ = 0;
+    public static double yaw = 0;
+    public static double pitch = 0;
+    public static String currentLocation = "";
+    public static Pet currentPet = new Pet();
+    public static Pest currentPest = new Pest();
+
+    //stats
+    public static int currentMana = -1;
+    public static int maxMana = -1;
+
     // Keybinds
     public static final KeyMapping menuKey = new KeyMapping(
             "Skytools Menu",
@@ -26,11 +41,6 @@ public class GameState {
             "Skytools"
     );
 
-    //data
-    public static String currentLocation = "";
-    public static Pet currentPet = new Pet();
-    public static Pest currentPest = new Pest();
-
     // storage
     public static final Map<Integer, List<ItemStack>> storageItems = new HashMap<>();
 
@@ -39,12 +49,6 @@ public class GameState {
 
     //location chcker
     public static boolean isInSkyblock = false;
-
-    //toggles
-    public static boolean RemoveFogToggle = false;
-    public static boolean showPesthud = false;
-    public static boolean showYawPitch = false;
-    public static boolean displayPet = false;
 
     // keys
     public static String petKey = "";
@@ -73,11 +77,11 @@ public class GameState {
     }
 
     public static void updateGameState() {
-        if(displayPet) {
+        if(ToggleState.displayPet) {
             SkyGet.updatePet();
         }
 
-        if(isInGarden() || showPesthud) {
+        if(isInGarden() || ToggleState.showPesthud) {
             SkyGet.updatePest();
         }
     }

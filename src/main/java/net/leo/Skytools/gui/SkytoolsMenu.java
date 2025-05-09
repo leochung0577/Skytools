@@ -1,6 +1,6 @@
 package net.leo.Skytools.gui;
 
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -63,7 +63,7 @@ public class SkytoolsMenu extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Toggles"),
                 button -> {
                     Minecraft mc = Minecraft.getInstance();
-                    mc.setScreen(new TogglesMenu());
+                    mc.setScreen(new ToggleMenu());
                 }
         ).bounds(10, this.height - 20 - 10, 75, 20).build());
     }

@@ -1,7 +1,7 @@
 package net.leo.Skytools.reader;
 
 import net.leo.Skytools.Skytools;
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.SystemMessageReceivedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

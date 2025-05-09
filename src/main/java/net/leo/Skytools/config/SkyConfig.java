@@ -12,14 +12,18 @@ public class SkyConfig {
     public static final ForgeConfigSpec.BooleanValue PEST_HUD;
     public static final ForgeConfigSpec.BooleanValue YAWPITCH_HUD;
     public static final ForgeConfigSpec.BooleanValue SHOW_PET;
+    public static final ForgeConfigSpec.BooleanValue SHOW_CORDS;
+    public static final ForgeConfigSpec.BooleanValue MANA_BAR;
 
     static {
         BUILDER.push("Toggles");
 
         REMOVE_FOG = BUILDER.comment("Enable Remove Fog").define("removeFog", false);
-        PEST_HUD = BUILDER.comment("Enable Pest hud").define("PestHud", false);
-        YAWPITCH_HUD = BUILDER.comment("Enable Yaw/Pitch hud").define("YawPitchHud", false);
+        PEST_HUD = BUILDER.comment("Enable Pest HUD").define("pestHud", false);
+        YAWPITCH_HUD = BUILDER.comment("Enable Yaw/Pitch HUD").define("yawPitchHud", false);
         SHOW_PET = BUILDER.comment("Enable Pet Display").define("displayPet", false);
+        SHOW_CORDS = BUILDER.comment("Enable Coordinates Display").define("displayCords", false);
+        MANA_BAR = BUILDER.comment("Enable Mana Bar Display").define("displayManaBar", false);
 
         BUILDER.pop();
     }
@@ -30,9 +34,10 @@ public class SkyConfig {
 
     static {
         TOGGLE_MAP.put("Remove Fog", REMOVE_FOG);
-        TOGGLE_MAP.put("Pest Hud", PEST_HUD);
-        TOGGLE_MAP.put("Yaw/Pitch Hud", YAWPITCH_HUD);
-        TOGGLE_MAP.put("Pet Display", SHOW_PET);
-
+        TOGGLE_MAP.put("Display Pest Hud", PEST_HUD);
+        TOGGLE_MAP.put("Display Yaw/Pitch Hud", YAWPITCH_HUD);
+        TOGGLE_MAP.put("Display Pet Hud", SHOW_PET);
+        TOGGLE_MAP.put("Display Cords Hud", SHOW_CORDS);
+        TOGGLE_MAP.put("Display Mana Bar", MANA_BAR);
     }
 }

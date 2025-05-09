@@ -2,6 +2,7 @@ package net.leo.Skytools.util;
 
 import net.leo.Skytools.obj.Pest;
 import net.leo.Skytools.obj.Pet;
+import net.leo.Skytools.state.GameState;
 
 import java.util.Map;
 import java.util.regex.Matcher;

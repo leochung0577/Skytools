@@ -1,10 +1,12 @@
 package net.leo.Skytools;
 
+import net.leo.Skytools.config.DisplayConfig;
 import net.leo.Skytools.config.SkyConfig;
-import net.leo.Skytools.gui.EquipmentInventory;
 import net.leo.Skytools.gui.SkytoolsMenu;
+import net.leo.Skytools.hud.ManaBar;
 import net.leo.Skytools.hud.Overlay;
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
+import net.leo.Skytools.state.ToggleState;
 import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
@@ -37,27 +39,43 @@ public class Skytools {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public Skytools() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SkyConfig.SPEC, "Skytools/SkytoolsConfig.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DisplayConfig.SPEC, "Skytools/display-config.toml");
+
+        loadEvents();
+
+        LOGGER.info("Skytools mod loaded!");
+    }
+
+    private void loadEvents() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::onClientSetup);
         modEventBus.addListener(this::registerKeybinds);
 
-        ModLoadingContext.get().registerConfig(
-                ModConfig.Type.CLIENT,
-                SkyConfig.SPEC,
-                "Skytools/SkytoolsConfig.toml"
-        );
-
         MinecraftForge.EVENT_BUS.register(this);
 
-        // static function
+        // static events
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.event.onLoginEvent.class);
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.event.RenderFogEvent.class);
-        MinecraftForge.EVENT_BUS.register(EquipmentInventory.class);
+        MinecraftForge.EVENT_BUS.register(net.leo.Skytools.gui.EquipmentInventory.class);
+        MinecraftForge.EVENT_BUS.register(net.leo.Skytools.hud.ManaBar.class);
 
+        // non-static events
         new net.leo.Skytools.reader.ChatReader();
-
-        LOGGER.info("Skytools mod loaded!");
     }
+
+    private void loadstate() {
+        // Toggles
+        ToggleState.RemoveFogToggle = SkyConfig.TOGGLE_MAP.get("Remove Fog").get();
+        ToggleState.showPesthud = SkyConfig.TOGGLE_MAP.get("Display Pest Hud").get();
+        ToggleState.showYawPitch = SkyConfig.TOGGLE_MAP.get("Display Yaw/Pitch Hud").get();
+        ToggleState.displayPet = SkyConfig.TOGGLE_MAP.get("Display Pet Hud").get();
+        ToggleState.displayCords = SkyConfig.TOGGLE_MAP.get("Display Cords Hud").get();
+        ToggleState.displayManaBar = SkyConfig.TOGGLE_MAP.get("Display Mana Bar").get();
+
+        //
+    }
+
 
 
     private void onClientSetup(final FMLClientSetupEvent event) {
@@ -65,12 +83,9 @@ public class Skytools {
             Gui gui = Minecraft.getInstance().gui;
             LayeredDraw layeredDraw = gui.layers;
             layeredDraw.add(new Overlay());
+            layeredDraw.add(new ManaBar());
 
-            //toggles
-            GameState.RemoveFogToggle = SkyConfig.TOGGLE_MAP.get("Remove Fog").get();
-            GameState.showPesthud = SkyConfig.TOGGLE_MAP.get("Pest Hud").get();
-            GameState.showYawPitch = SkyConfig.TOGGLE_MAP.get("Yaw/Pitch Hud").get();
-            GameState.displayPet = SkyConfig.TOGGLE_MAP.get("Pet Display").get();
+            loadstate();
 
             //equipment data
             for (int i = 0; i < 4; i++) {

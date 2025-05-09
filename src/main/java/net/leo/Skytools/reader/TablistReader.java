@@ -1,6 +1,6 @@
 package net.leo.Skytools.reader;
 
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
 import net.leo.Skytools.util.AutoCommand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;

@@ -2,7 +2,7 @@ package net.leo.Skytools.event;
 
 import net.leo.Skytools.reader.ScoreboardReader;
 import net.leo.Skytools.reader.TablistReader;
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

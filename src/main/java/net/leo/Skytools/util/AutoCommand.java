@@ -1,5 +1,6 @@
 package net.leo.Skytools.util;
 
+import net.leo.Skytools.state.GameState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;

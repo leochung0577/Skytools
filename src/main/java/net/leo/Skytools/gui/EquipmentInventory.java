@@ -3,7 +3,7 @@ package net.leo.Skytools.gui;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.leo.Skytools.util.AutoCommand;
-import net.leo.Skytools.util.GameState;
+import net.leo.Skytools.state.GameState;
 import net.leo.Skytools.util.FileManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
