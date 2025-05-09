@@ -1,6 +1,7 @@
 package net.leo.Skytools.hud;
 
 import net.leo.Skytools.obj.Pest;
+import net.leo.Skytools.renderer.CordsRenderer;
 import net.leo.Skytools.renderer.PestRenderer;
 import net.leo.Skytools.renderer.PetRenderer;
 import net.leo.Skytools.renderer.YawPitchRenderer;
@@ -25,10 +26,15 @@ public class Overlay implements LayeredDraw.Layer {
 //                || !GameState.isInSkyblock
         ) return;
 
-        int x = 10;
-        int y = 10;
+        if(ToggleState.displayCords) {
+            GameState.playerX = mc.player.getX();
+            GameState.playerY = mc.player.getY();
+            GameState.playerZ = mc.player.getZ();
 
-//        if(GameState.isInGarden()) {
+            CordsRenderer.renderCords(guiGraphics, DisplayState.cordX, DisplayState.cordY, DisplayState.cordSize);
+        }
+
+        if(GameState.isInGarden()) {
             if(ToggleState.showYawPitch) {
                 float yaw = mc.player.getYRot() % 360;
                 if (yaw > 180) yaw -= 360;
@@ -46,7 +52,7 @@ public class Overlay implements LayeredDraw.Layer {
 
             if(ToggleState.showPesthud)
                 PestRenderer.renderPestDisplay(guiGraphics, DisplayState.pestX, DisplayState.pestY, DisplayState.pestSize, GameState.currentPest);
-//        }
+        }
 
         if (GameState.currentPet.isValidPet() && ToggleState.displayPet) {
                 PetRenderer.renderPetDisplay(guiGraphics, DisplayState.petX, DisplayState.petY, DisplayState.petSize);
