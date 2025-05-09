@@ -32,5 +32,5 @@ https://modrinth.com/project/skytools
 #### Cords Display<br />
 ![image](https://github.com/user-attachments/assets/41b7b37d-c4f3-4a42-b787-4304b51968fc)
 
-#### Rare offers highlight<br />
+#### Rare garden offers highlight<br />
 ![image](https://github.com/user-attachments/assets/1b8a3745-3f5b-4c5c-8d0f-fc6cd480395b)
