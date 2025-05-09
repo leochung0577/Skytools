@@ -14,6 +14,7 @@ public class SkyConfig {
     public static final ForgeConfigSpec.BooleanValue SHOW_PET;
     public static final ForgeConfigSpec.BooleanValue SHOW_CORDS;
     public static final ForgeConfigSpec.BooleanValue MANA_BAR;
+    public static final ForgeConfigSpec.BooleanValue RARE_GARDEN_OFFERS;
 
     static {
         BUILDER.push("Toggles");
@@ -24,6 +25,7 @@ public class SkyConfig {
         SHOW_PET = BUILDER.comment("Enable Pet Display").define("displayPet", false);
         SHOW_CORDS = BUILDER.comment("Enable Coordinates Display").define("displayCords", false);
         MANA_BAR = BUILDER.comment("Enable Mana Bar Display").define("displayManaBar", false);
+        RARE_GARDEN_OFFERS = BUILDER.comment("Enable Rare Garden Offers").define("rareGardenOffers", false);
 
         BUILDER.pop();
     }
@@ -39,5 +41,6 @@ public class SkyConfig {
         TOGGLE_MAP.put("Display Pet Hud", SHOW_PET);
         TOGGLE_MAP.put("Display Cords Hud", SHOW_CORDS);
         TOGGLE_MAP.put("Display Mana Bar", MANA_BAR);
+        TOGGLE_MAP.put("Rare Garden Offers Highlight", RARE_GARDEN_OFFERS);
     }
 }

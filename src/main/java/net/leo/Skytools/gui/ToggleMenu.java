@@ -23,7 +23,8 @@ public class ToggleMenu extends Screen {
             "Display Yaw/Pitch Hud",
             "Display Pet Hud",
             "Display Cords Hud",
-            "Display Mana Bar"
+            "Display Mana Bar",
+            "Rare Garden Offers Highlight"
     );
 
     private final Map<String, Boolean> toggleStates = new HashMap<>();
@@ -121,6 +122,7 @@ public class ToggleMenu extends Screen {
                     case "Display Pet Hud" -> ToggleState.displayPet = toggled;
                     case "Display Cords Hud" -> ToggleState.displayCords = toggled;
                     case "Display Mana Bar" -> ToggleState.displayManaBar = toggled;
+                    case "Rare Garden Offers Highlight" -> ToggleState.displayRareGardenOffers = toggled;
                 }
                 return true;
             }

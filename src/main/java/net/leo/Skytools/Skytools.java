@@ -73,6 +73,8 @@ public class Skytools {
         ToggleState.displayPet = SkyConfig.TOGGLE_MAP.get("Display Pet Hud").get();
         ToggleState.displayCords = SkyConfig.TOGGLE_MAP.get("Display Cords Hud").get();
         ToggleState.displayManaBar = SkyConfig.TOGGLE_MAP.get("Display Mana Bar").get();
+        ToggleState.displayRareGardenOffers = SkyConfig.TOGGLE_MAP.get("Rare Garden Offers Highlight").get();
+
     }
 
 

@@ -8,4 +8,5 @@ public class ToggleState {
     public static boolean displayPet = false;
     public static boolean displayCords = false;
     public static boolean displayManaBar = false;
+    public static boolean displayRareGardenOffers = false;
 }

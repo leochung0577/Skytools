@@ -1,6 +1,7 @@
 package net.leo.Skytools.gui.garden;
 
 import net.leo.Skytools.state.GameState;
+import net.leo.Skytools.state.ToggleState;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.component.TypedDataComponent;
@@ -22,6 +23,7 @@ public class RareItemsHighlight {
 
     @SubscribeEvent
     public static void onGuiRender(ScreenEvent.Render.Post event) {
+        if(!ToggleState.displayRareGardenOffers) return;
         if (!(event.getScreen() instanceof AbstractContainerScreen<?>) && GameState.isInGarden()) return;
 
         if(!rareItem) return;
@@ -41,6 +43,7 @@ public class RareItemsHighlight {
 
     @SubscribeEvent
     public static void onScreenOpen(ScreenEvent.Opening event) {
+        if(!ToggleState.displayRareGardenOffers) return;
         if (event.getNewScreen() instanceof AbstractContainerScreen<?> && GameState.isInGarden()) {
             rareItem = false;
             pendingScreen = (AbstractContainerScreen<?>) event.getNewScreen();
