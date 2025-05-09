@@ -25,3 +25,12 @@ https://modrinth.com/project/skytools
 
 #### Storage Peak<br />
 ![image](https://github.com/user-attachments/assets/409449ca-1f11-4038-a9d3-2113ab506cbd)
+
+#### Mana bar<br />
+![image](https://github.com/user-attachments/assets/90bb81e4-68b1-45b0-955f-e2f253d115b3)
+
+#### Cords Display<br />
+![image](https://github.com/user-attachments/assets/41b7b37d-c4f3-4a42-b787-4304b51968fc)
+
+#### Rare offers highlight<br />
+![image](https://github.com/user-attachments/assets/1b8a3745-3f5b-4c5c-8d0f-fc6cd480395b)
