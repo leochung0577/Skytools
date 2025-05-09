@@ -1,6 +1,5 @@
 package net.leo.Skytools.hud;
 
-import net.leo.Skytools.obj.Pest;
 import net.leo.Skytools.renderer.CordsRenderer;
 import net.leo.Skytools.renderer.PestRenderer;
 import net.leo.Skytools.renderer.PetRenderer;
@@ -12,10 +11,6 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.network.chat.Component;
-
-import java.util.List;
 
 public class Overlay implements LayeredDraw.Layer {
 

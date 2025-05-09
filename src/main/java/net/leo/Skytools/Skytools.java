@@ -59,6 +59,7 @@ public class Skytools {
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.event.RenderFogEvent.class);
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.gui.EquipmentInventory.class);
         MinecraftForge.EVENT_BUS.register(net.leo.Skytools.hud.ManaBar.class);
+        MinecraftForge.EVENT_BUS.register(net.leo.Skytools.gui.garden.RareItemsHighlight.class);
 
         // non-static events
         new net.leo.Skytools.reader.ChatReader();
@@ -72,8 +73,6 @@ public class Skytools {
         ToggleState.displayPet = SkyConfig.TOGGLE_MAP.get("Display Pet Hud").get();
         ToggleState.displayCords = SkyConfig.TOGGLE_MAP.get("Display Cords Hud").get();
         ToggleState.displayManaBar = SkyConfig.TOGGLE_MAP.get("Display Mana Bar").get();
-
-        //
     }
 
 
