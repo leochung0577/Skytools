@@ -2,7 +2,7 @@ package net.leo.Skytools;
 
 import net.leo.Skytools.config.DisplayConfig;
 import net.leo.Skytools.config.SkyConfig;
-import net.leo.Skytools.gui.SkytoolsMenu;
+import net.leo.Skytools.gui.ToggleMenu;
 import net.leo.Skytools.hud.ManaBar;
 import net.leo.Skytools.hud.Overlay;
 import net.leo.Skytools.state.GameState;
@@ -124,7 +124,7 @@ public class Skytools {
     public void onKeyInput(InputEvent.Key event) {
         if (GameState.menuKey != null && GameState.menuKey.consumeClick()) {
             Minecraft mc = Minecraft.getInstance();
-            mc.setScreen(new SkytoolsMenu());
+            mc.setScreen(new ToggleMenu());
         }
     }
 
@@ -136,7 +136,7 @@ public class Skytools {
 
             Button skyToolsButton = Button.builder(
                     net.minecraft.network.chat.Component.literal("Skytools"),
-                    btn -> Minecraft.getInstance().setScreen(new SkytoolsMenu())
+                    btn -> Minecraft.getInstance().setScreen(new ToggleMenu())
             ).bounds(x, y, 100, 20).build();
 
             event.addListener(skyToolsButton);

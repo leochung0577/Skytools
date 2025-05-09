@@ -66,7 +66,7 @@ public class ToggleMenu extends Screen {
 
         addRenderableWidget(Button.builder(
                 Component.literal("Done"),
-                b -> Minecraft.getInstance().setScreen(new SkytoolsMenu())
+                b -> this.onClose()
         ).bounds(this.width / 2 - 100, this.height - 25, 200, 20).build());
     }
 
