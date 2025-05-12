@@ -24,12 +24,12 @@ public class RareItemsHighlight {
     @SubscribeEvent
     public static void onGuiRender(ScreenEvent.Render.Post event) {
         if(!ToggleState.displayRareGardenOffers) return;
-        if (!(event.getScreen() instanceof AbstractContainerScreen<?>) && GameState.isInGarden()) return;
-
+        if (!(event.getScreen() instanceof AbstractContainerScreen<?> containerScreen) && GameState.isInGarden()) return;
         if(!rareItem) return;
         GuiGraphics guiGraphics = event.getGuiGraphics();
-        int x = 435;
-        int y = 212;
+        int x = event.getScreen().width / 2 - 45;
+        int y = event.getScreen().height / 2 - 40;
+
         int size = 18;
         int borderThickness = 1;
         int color = 0xFF00FF00;
